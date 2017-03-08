@@ -7,6 +7,8 @@ class Gia extends React.Component {
 class KhoaHoc extends React.Component {
     show() {
         console.log(this.props.gia);
+        const tenHocVien = this.refs.txtHocVien.value;
+        alert(tenHocVien);
     }
     render() {
         let { ten, teacher, gia } = this.props;
@@ -16,6 +18,7 @@ class KhoaHoc extends React.Component {
                 <p>{teacher}</p>
                 <Gia price={gia}/>
                 <button onClick={this.show.bind(this)}>Tăng giá</button>
+                <input type="text" placeholder="Ten Hoc Vien" ref="txtHocVien"/>
             </div>
         );
     }
