@@ -6,11 +6,13 @@ class Gia extends React.Component {
 
 class KhoaHoc extends React.Component {
     render() {
-        let { ten, teacher } = this.props;
+        let { ten, teacher, gia } = this.props;
         return (
             <div>
                 <h3>{ten}</h3>
                 <p>{teacher}</p>
+                <Gia price={gia}/>
+                <button onClick={() => console.log(gia)}>Tăng giá</button>
             </div>
         );
     }
@@ -18,10 +20,9 @@ class KhoaHoc extends React.Component {
 
 ReactDOM.render(
     <div>
-        <KhoaHoc ten="NodeJS" teacher="Khoa Pham"/>
+        <KhoaHoc ten="NodeJS" teacher="Khoa Pham" gia="5000" />
         <br/>
-        <Gia price="5000"/>
-        <KhoaHoc ten="ReactJS" teacher="Pho"/>
+        <KhoaHoc ten="ReactJS" teacher="Pho" gia="10000" />
     </div>,
     document.getElementById('root')
 );
