@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "eslint-config-rallycoding": "^3.2.0",
+    "express": "^4.15.2"
+  },
+  "name": "reactjs1912",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vanpho93/reactjs1912.git",
+  "author": "<vanpho02@gmail.com>",
+  "license": "MIT"
+}
