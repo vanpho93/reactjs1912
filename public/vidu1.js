@@ -5,6 +5,9 @@ class Gia extends React.Component {
 }
 
 class KhoaHoc extends React.Component {
+    show() {
+        console.log(this.props.gia);
+    }
     render() {
         let { ten, teacher, gia } = this.props;
         return (
@@ -12,7 +15,7 @@ class KhoaHoc extends React.Component {
                 <h3>{ten}</h3>
                 <p>{teacher}</p>
                 <Gia price={gia}/>
-                <button onClick={() => console.log(gia)}>Tăng giá</button>
+                <button onClick={this.show.bind(this)}>Tăng giá</button>
             </div>
         );
     }
