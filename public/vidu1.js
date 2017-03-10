@@ -14,7 +14,7 @@ class KhoaHoc extends React.Component {
         let { ten, teacher, gia } = this.props;
         return (
             <div>
-                <h3>{ten}</h3>
+                <h3 className="title">{ten}</h3>
                 <p>{teacher}</p>
                 <Gia price={gia}/>
                 <button onClick={this.show.bind(this)}>Tăng giá</button>
