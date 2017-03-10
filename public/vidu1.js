@@ -18,7 +18,7 @@ class KhoaHoc extends React.Component {
                 <p>{teacher}</p>
                 <Gia price={gia}/>
                 <button onClick={this.show.bind(this)}>Tăng giá</button>
-                <input type="text" placeholder="Ten Hoc Vien" ref="txtHocVien"/>
+                <input type="text" placeholder="Ten Hoc Vien" defaultValue="123" ref="txtHocVien" />
             </div>
         );
     }
