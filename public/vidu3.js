@@ -30,12 +30,15 @@ class Count extends React.Component {
     }
     render() {
         const { value } = this.state;
+        console.log('Xin chao');
         return (
-            <p>
+            <div>
                 <button onClick={this.add.bind(this)}> + </button>
-                <h3>{value}</h3>
+                    <h3>{value}</h3>
+                    <h3>{value + 1}</h3>
+                    <h3>{value + 2}</h3>
                 <button onClick={this.sub.bind(this)}> - </button>
-            </p>
+            </div>
         )
     }
 }
