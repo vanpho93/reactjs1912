@@ -24,9 +24,9 @@ class List extends React.Component {
 
     add() {
         let newObj = {
-            id: 4, 
-            subject: 'An Choi', 
-            content: 'Di choi 20/10', 
+            id: this.refs.txtId.value,
+            subject: this.refs.txtSubject.value, 
+            content: this.refs.txtContent.value, 
             important: true
         }
         this.state.mang.push(newObj);
@@ -46,8 +46,9 @@ class List extends React.Component {
             <div>
                 { arrayEle }
                 <div>
-                    <input type="text"/>
-                    <input type="text"/>
+                    <input type="text" ref="txtId"/>
+                    <input type="text" ref="txtSubject"/>
+                    <input type="text" ref="txtContent"/>
                     <button onClick={this.add.bind(this)}>Add</button>
                 </div>
             </div>
