@@ -22,15 +22,34 @@ class List extends React.Component {
         { id: 3, subject: 'An Choi', content: 'Di choi 8/3', important: false}
     ]}
 
+    add() {
+        let newObj = {
+            id: 4, 
+            subject: 'An Choi', 
+            content: 'Di choi 20/10', 
+            important: true
+        }
+        this.state.mang.push(newObj);
+        this.setState(this.state);
+    }
+
     render() {
-        let arrayEle = this.state.mang.map( e => <Note 
-            subject={e.subject}
-            content={e.content}
-            important={e.important}
-        /> );
+        let arrayEle = this.state.mang.map( e => ( 
+            <Note 
+                subject={e.subject}
+                content={e.content}
+                important={e.important}
+                key={e.content}
+            />
+        ));
         return (
             <div>
                 { arrayEle }
+                <div>
+                    <input type="text"/>
+                    <input type="text"/>
+                    <button onClick={this.add.bind(this)}>Add</button>
+                </div>
             </div>
         );
     }
