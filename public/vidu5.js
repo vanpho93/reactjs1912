@@ -21,6 +21,17 @@ class Note extends React.Component {
 }
 
 class NoteForm extends React.Component {
+  add() {
+    const { parent } = this.props;
+    const newObj = {
+        id: this.refs.txtId.value,
+        subject: this.refs.txtSubject.value,
+        content: this.refs.txtContent.value,
+        important: true
+    };
+    parent.state.mang.push(newObj);
+    parent.setState(parent.state);
+  }
   render() {
     return (
       <div>
@@ -31,7 +42,7 @@ class NoteForm extends React.Component {
         <br/><br/>
         <input type="text" ref="txtContent" placeholder="content"/>
         <br/><br/>
-        <button>Add</button>
+        <button onClick={this.add.bind(this)}>Add</button>
       </div>
     );
   }
@@ -43,17 +54,6 @@ class List extends React.Component {
         { id: 2, subject: 'Hoc Tap', content: 'Nop do an cuoi khoa', important: true},
         { id: 3, subject: 'An Choi', content: 'Di choi 8/3', important: false}
     ]}
-
-    add() {
-        let newObj = {
-            id: this.refs.txtId.value,
-            subject: this.refs.txtSubject.value,
-            content: this.refs.txtContent.value,
-            important: true
-        }
-        this.state.mang.push(newObj);
-        this.setState(this.state);
-    }
 
     render() {
         let arrayEle = this.state.mang.map((e, i) => (
@@ -69,7 +69,7 @@ class List extends React.Component {
         return (
             <div>
                 { arrayEle }
-                <NoteForm />
+                <NoteForm parent={this}/>
             </div>
         );
     }
