@@ -20,6 +20,23 @@ class Note extends React.Component {
     }
 }
 
+class NoteForm extends React.Component {
+  render() {
+    return (
+      <div>
+        <br/>
+        <input type="text" ref="txtId" placeholder="id"/>
+        <br/><br/>
+        <input type="text" ref="txtSubject" placeholder="subject"/>
+        <br/><br/>
+        <input type="text" ref="txtContent" placeholder="content"/>
+        <br/><br/>
+        <button>Add</button>
+      </div>
+    );
+  }
+}
+
 class List extends React.Component {
     state = { mang: [
         { id: 1, subject: 'Hoc Tap', content: 'Lam bai tap ve nha', important: false},
@@ -52,12 +69,7 @@ class List extends React.Component {
         return (
             <div>
                 { arrayEle }
-                <div>
-                    <input type="text" ref="txtId"/>
-                    <input type="text" ref="txtSubject"/>
-                    <input type="text" ref="txtContent"/>
-                    <button onClick={this.add.bind(this)}>Add</button>
-                </div>
+                <NoteForm />
             </div>
         );
     }
