@@ -1,6 +1,7 @@
 class Control extends React.Component {
     myAdd(){
-        this.props.handleAdd();
+      const { parent } = this.props;
+      parent.setState({value: parent.state.value + 1});
     }
     render() {
         return <button onClick={this.myAdd.bind(this)}>Add</button>;
@@ -17,7 +18,10 @@ class Container extends React.Component {
             <div>
                 <h3>{this.state.value}</h3>
                 <button onClick={this.add.bind(this)}>Add Easy</button>
-                <Control handleAdd={this.add.bind(this)}/>
+                <Control
+                  handleAdd={this.add.bind(this)}
+                  parent={this}
+                />
             </div>
         );
     }
