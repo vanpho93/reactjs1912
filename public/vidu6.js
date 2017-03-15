@@ -1,3 +1,5 @@
+let that;
+
 class Control extends React.Component {
     myAdd(){
       const { parent } = this.props;
@@ -14,17 +16,22 @@ class Container extends React.Component {
         this.setState({ value: this.state.value + 1 });
     }
     render() {
-        return (
-            <div>
-                <h3>{this.state.value}</h3>
-                <button onClick={this.add.bind(this)}>Add Easy</button>
-                <Control
-                  handleAdd={this.add.bind(this)}
-                  parent={this}
-                />
-            </div>
-        );
+      // that = this;
+      return (
+          <div>
+              <h3>{this.state.value}</h3>
+              <button onClick={this.add.bind(this)}>Add Easy</button>
+              <Control
+                handleAdd={this.add.bind(this)}
+                parent={this}
+              />
+          </div>
+      );
     }
 }
 
-ReactDOM.render(<Container />, document.getElementById('root'));
+ReactDOM.render(
+  <div>
+    <Container />
+    <Container />
+  </div>, document.getElementById('root'));
