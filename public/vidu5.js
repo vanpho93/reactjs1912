@@ -4,6 +4,19 @@ const getHtml = important => important ? null : <button>Xoá</button>;
 
 class Note extends React.Component {
     state = {isUpdating: false}
+    save() {
+        const newContent = this.refs.txtContent.value;
+        const { parent, index } = this.props;
+        parent.state.mang[index].content = newContent;
+        parent.setState(parent.state);
+
+        this.state.isUpdating = false;
+        this.setState(this.state);
+    }
+    cancel() {
+        this.state.isUpdating = false;
+        this.setState(this.state);
+    }
     update() {
         this.state.isUpdating = true;
         this.setState(this.state);
@@ -20,8 +33,8 @@ class Note extends React.Component {
 
         const buttonUpdate = (
             <div>
-                <button onClick={this.remove.bind(this)}>Huỷ</button>
-                <button onClick={this.update.bind(this)}>Lưu</button>
+                <button onClick={this.cancel.bind(this)}>Huỷ</button>
+                <button onClick={this.save.bind(this)}>Lưu</button>
             </div>
         );
 
@@ -87,7 +100,7 @@ class List extends React.Component {
                 subject={e.subject}
                 content={e.content}
                 important={e.important}
-                key={e.content}
+                key={e.id}
                 parent={this}
             />
         ));
