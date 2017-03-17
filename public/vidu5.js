@@ -3,6 +3,11 @@ const getClass = isImportant => isImportant ? "red" : "green";
 const getHtml = important => important ? null : <button>Xoá</button>;
 
 class Note extends React.Component {
+    state = {isUpdating: false}
+    update() {
+        this.state.isUpdating = true;
+        this.setState(this.state);
+    }
     remove() {
       const { parent, index } = this.props;
       parent.state.mang.splice(index, 1);
@@ -10,11 +15,15 @@ class Note extends React.Component {
     }
     render() {
         const { subject, content, important } = this.props;
+        const input = <input type="text" defaultValue={content} placeholder="Enter new content" ref="txtContent"/>;
+        const xhtml = this.state.isUpdating ? input : <p>{content}</p>;
         return (
             <div>
                 <h3 className={getClass(important)}>{subject}</h3>
-                <p>{content}</p>
+                { xhtml }
+                <hr/>
                 <button onClick={this.remove.bind(this)}>Xoá</button>
+                <button onClick={this.update.bind(this)}>Sửa</button>
             </div>
         );
     }
