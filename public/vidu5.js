@@ -17,13 +17,29 @@ class Note extends React.Component {
         const { subject, content, important } = this.props;
         const input = <input type="text" defaultValue={content} placeholder="Enter new content" ref="txtContent"/>;
         const xhtml = this.state.isUpdating ? input : <p>{content}</p>;
+
+        const buttonUpdate = (
+            <div>
+                <button onClick={this.remove.bind(this)}>Huỷ</button>
+                <button onClick={this.update.bind(this)}>Lưu</button>
+            </div>
+        );
+
+        const buttonNotUpdate = (
+            <div>
+                <button onClick={this.remove.bind(this)}>Xoá</button>
+                <button onClick={this.update.bind(this)}>Sửa</button>
+            </div>
+        );
+
+        const htmlControls = this.state.isUpdating ? buttonUpdate : buttonNotUpdate;
+
         return (
             <div>
                 <h3 className={getClass(important)}>{subject}</h3>
                 { xhtml }
                 <hr/>
-                <button onClick={this.remove.bind(this)}>Xoá</button>
-                <button onClick={this.update.bind(this)}>Sửa</button>
+                { htmlControls }
             </div>
         );
     }
